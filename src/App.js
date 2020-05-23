@@ -3,7 +3,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LandingPage from "./Components/LandingPage";
 import Navigation from "./Components/Navigation";
-// import Drawer from "./Components/Drawer";
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
       <CssBaseline />
       <BrowserRouter>
         <Navigation />
-
         <Switch>
           <Route component={LandingPage} path="/" />
         </Switch>

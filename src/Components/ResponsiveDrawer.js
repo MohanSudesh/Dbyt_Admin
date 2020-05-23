@@ -1,4 +1,5 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
@@ -8,6 +9,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import MailIcon from "@material-ui/icons/Mail";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 export const drawerWidth = 240;
@@ -24,14 +27,42 @@ const useStyles = makeStyles((theme) => ({
   },
 
   // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
+
+  toolbar: {
+    toolbar: theme.mixins.toolbar,
+    height: 55,
+  },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: "#246884",
+    color: "#F2F1ED",
+  },
+  text: {
+    textAlign: "center",
+    verticalAlign: "center",
+    position: "relative",
+    top: "70%",
+    left: "20%",
+    margin: theme.spacing(3, 0, 0, 1),
+    transform: "translateY(-50%)",
+  },
+  text2: {
+    fontWeight: "500px",
+  },
+  icon: {
+    margin: theme.spacing(0, 0, 0, 1),
+  },
+  icon2: {
+    margin: theme.spacing(0, 0, 0, 2),
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  divider: {
+    backgroundColor: "#ffffff",
+  },
+  a: {},
 }));
 
 export default function ResponsiveDrawer(props) {
@@ -40,21 +71,50 @@ export default function ResponsiveDrawer(props) {
   const theme = useTheme();
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
-      <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
+        <div className={classes.toolbar}>
+          <ListItem button component="a" href="#">
+            <Typography variant="h5" className={classes.text}>
+              DbyT Orbit
+            </Typography>
+          </ListItem>
+        </div>
+      </List>
+
+      <Divider variant="middle" className={classes.divider} />
+      <List>
+        <ListItem button component="a" href="#">
+          <ListItemIcon>
+            <AccountCircleIcon
+              fontSize="large"
+              color="primary"
+              className={classes.icon}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary={<Typography variant="h6">Admin</Typography>}
+          ></ListItemText>
+        </ListItem>
+      </List>
+      <Divider variant="middle" className={classes.divider} />
+      <List>
+        {["Dashboard"].map((text) => (
+          <ListItem button key={text} component="a" href="#">
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <DashboardIcon className={classes.icon2} color="primary" />
             </ListItemIcon>
             <ListItemText primary={text} />
+            <Divider
+              variant="middle"
+              className={classes.divider}
+              orientation="horizontal"
+            />
           </ListItem>
         ))}
       </List>
-      <Divider />
+      {/* <Divider /> */}
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {[].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

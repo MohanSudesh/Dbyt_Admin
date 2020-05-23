@@ -10,9 +10,7 @@ import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import MenuIcon from "@material-ui/icons/Menu";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
-import ResponsiveDrawer, { drawerWidth } from "../Components/Drawer";
-
-// const drawerWidth
+import ResponsiveDrawer, { drawerWidth } from "./ResponsiveDrawer";
 
 const useStyles = makeStyles((theme) => ({
   appbar: {
